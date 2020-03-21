@@ -1,6 +1,6 @@
 # Flutter network todos example
 
-A demo application using Flutter that demonstrates how to fetch and render data from the network..
+A demo application using Flutter that demonstrates how to fetch and render data from the network.
 
 ## Features
 
