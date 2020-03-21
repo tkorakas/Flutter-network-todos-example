@@ -1,10 +1,17 @@
-# demo_app
+# Flutter network todos example
 
-A new Flutter project.
+A demo application using Flutter that demonstrates how to fetch and render data from the network..
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- Network request
+- Model hydration
+- List render
+- State update
+- User action handling
+- Loading indicator
+
+## Getting started
 
 A few resources to get you started if this is your first Flutter project:
 
