@@ -36,8 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    _loadTodos();
     super.initState();
+    _loadTodos();
   }
 
   Future<void> _loadTodos() async {
@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: _loading
-            ? CircularProgressIndicator
+            ? CircularProgressIndicator()
             : ListView(
                 children: _renderItems(),
               ),
