@@ -30,23 +30,31 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final String API = 'https://jsonplaceholder.typicode.com/todos';
   bool _loading = false;
   List<Todo> _todos = [];
 
+  @override
   void initState() {
     _loadTodos();
+    super.initState();
   }
 
   Future<void> _loadTodos() async {
+    setState(() {
+      _loading = true;
+    });
+
     http.Response response =
-        await http.get('https://jsonplaceholder.typicode.com/todos');
+        await http.get(API);
     List body = json.decode(response.body);
     setState(() {
       _todos = body.map((todo) => Todo.fromJson(todo)).toList();
+      _loading = false;
     });
   }
 
-  List<ListTile> renderItems() {
+  List<ListTile> _renderItems() {
     return _todos.map((todo) {
       Icon icon = todo.completed
           ? Icon(Icons.check)
@@ -83,9 +91,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       body: Center(
-        child: ListView(
-          children: renderItems(),
-        ),
+        child: _loading
+            ? CircularProgressIndicator
+            : ListView(
+                children: _renderItems(),
+              ),
       ),
     );
   }
